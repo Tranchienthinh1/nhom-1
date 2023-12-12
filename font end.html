@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnamairline</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fontAwesome.css">
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #FFE8DF;
+    }
+        form {
+        width: 588px;
+        margin: 0 auto;
+        background-color: rgb(134, 225, 241);
+        padding: 26px;
+        border-radius: 4px;}
+        
+   #flightForm {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-gap: 10px;
+  align-items: center;
+}
+
+label {
+  justify-self: end;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="date"] {
+  grid-column: 2 / 3;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type="button"] {
+  justify-self: center;
+  grid-column: span 2;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="button"]:hover {
+  background-color: #45a049;
+}
+
+    .error-message {
+        color: red;
+        margin-bottom: 10px;
+    }
+
+    #flightInfo,
+    #ticketPrice,
+    #notification,
+    #payment,
+    #thankYou,
+    #bestWishes {
+        display: none;
+    }
+
+    #payment {
+        text-align: center;
+    }
+
+    #payment h3 {
+        margin-top: 0;
+    }
+
+
+    #payment img {
+        max-width: 50px;
+        max-height: 50px;
+        margin-bottom: 10px;
+    }
+
+    #paymentButton {
+        display: none;
+        padding: 10px 20px;
+        background-color: #000;
+        color: #FFF;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #paymentButton:hover {
+        background-color: #333;
+    }
+
+    input {
+        margin-bottom: 10px;
+    }
+
+    button {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: darkblue;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    .payment-container {
+        display: none;
+    }
+    .payment-container img {
+  width: 200px;
+}
+</style>
+<body>
+    <form id="flightForm">
+        <label for="name">Họ và tên:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="phone">Số điện thoại:</label>
+        <input type="text" id="phone" name="phone" required>  
+        <label for="idCardNumber">Số căn cước công dân:</label>
+        <input type="text" id="idCardNumber" name="idCardNumber" required>
+        <label for="departure">Điểm khởi hành:</label>
+        <select id="departure" name="departure" required>
+            <option value="">Chọn điểm khởi hành</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="France">Pháp</option>
+            <option value="Germany">Đức</option>
+            <option value="Cambodia">Campuchia</option>
+            <option value="Hong Kong">Hồng Kông</option>
+            <option value="India">Ấn Độ</option>
+            <option value="Japan">Nhật Bản</option>
+            <option value="Korea">Hàn Quốc</option>
+            <option value="Laos">Lào</option>
+            <option value="Myanmar">Myanmar (Miến Điện)</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Thailand">Thái Lan</option>
+            <option value="Vietnam">Việt Nam</option>
+        </select><br><br>
+        <label for="destination">Điểm đến:</label>
+        <select id="destination" name="destination" required>
+            <option value="">Chọn điểm đến</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="France">Pháp</option>
+            <option value="Germany">Đức</option>
+            <option value="Cambodia">Campuchia</option>
+            <option value="Hong Kong">Hồng Kông</option>
+            <option value="India">Ấn Độ</option>
+            <option value="Japan">Nhật Bản</option>
+            <option value="Korea">Hàn Quốc</option>
+            <option value="Laos">Lào</option>
+            <option value="Myanmar">Myanmar (Miến Điện)</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Thailand">Thái Lan</option>
+            <option value="Vietnam">Việt Nam</option>
+        </select><br><br>
+        <label for="date">Ngày đi:</label>
+        <input type="date" id="date" name="date" required><br><br>
+        <label for="passengers">Số hành khách:</label>
+        <input type="number" id="passengers" name="passengers" min="1" max="100" required><br><br>
+        <input type="button" value="Đặt chuyến bay" onclick="submitForm()">
+    </form>
+    <div id="flightInfo" style="display: none;"></div>
+    <div id="ticketPrice" style="display: none;"></div>
+    <p id="notification" style="display: none;"></p>
+    <div class="payment-container">
+        <p id="payment" style="display: none;">
+        <h3>Thanh toán</h3>
+        <img id="qrCode" class="qr-code" src="./img/qr.jpg" alt="Mã QR Thanh toán">
+    </div><br><br>
+    <button id="paymentButton" style="display: none;" onclick="completePayment()">Hoàn tất thanh toán</button>
+    </p>
+    <p id="thankYou" style="display: none;">Cảm ơn bạn đã đặt chuyến bay với chúng tôi! 🙏</p>
+    <p id="bestWishes" style="display: none;">Chúc bạn một chuyến bay tốt đẹp! ✈️🌍</p>
+    <section class="banner" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="left-side">
+                        <div class="logo">
+                            <img src="img/logo.png" alt="Flight Template">
+                        </div>
+                        <div class="tabs-content">
+                            <h4>Chọn hướng đi của bạn</h4>
+                            <ul class="social-links">
+                                <li><a href="https://www.facebook.com//">Tìm trên <em> Facebook </em><i class=""></i></a></li>
+                                <li><a href="http://youtube.com/">Theo dõi<em> YouTube</em><i class=""></i></a></li>
+                                <li><a href="http://instagram.com/">Theo dõi <em> instagram</em><i class=""></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="page-direction-button">
+                            <a href="font end2.html"><i class="fa fa-phone"></i>Liên lạc với chúng tôi ngay</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <section id="first-tab-group" class="tabgroup">
+                        <div id="tab1">
+                            <div class="submit-form">
+                                <h4>Kiểm tra tính sẵn sàng cho<em> phương hướng</em>:</h4>
+                                <form id="form-submit" action="#" method="get">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="from">Từ:</label>
+                                                <select required name='from' onchange='this.form()'>
+                                                    <option value="">Chọn một vị trí...</option>
+                                                    <option value="Cambodia">Cam-pu-chia</option>
+                                                    <option value="Hong Kong">Hong Koong</option>
+                                                    <option value="India">Ấn Độ</option>
+                                                    <option value="Japan">Nhật Bản</option>
+                                                    <option value="Korea">Hàn Quốc</option>
+                                                    <option value="Laos">Lào</option>
+                                                    <option value="Myanmar">Myanmar</option>
+                                                    <option value="Singapore">Singapore</option>
+                                                    <option value="Thailand">Thái Lan</option>
+                                                    <option value="Vietnam">Việt Nam</option>
+                                                    <option value="USA">Mỹ</option>
+                                                    <option value="UK">Vương quốc Anh</option>
+                                                    <option value="France">Pháp</option>
+                                                    <option value="Germany">Đức</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="to">Đến:</label>
+                                                <select required name='to' onchange='this.form()'>
+                                                    <option value="">Chọn một vị trí...</option>
+                                                    <option value="Cambodia">Cam-pu-chia</option>
+                                                    <option value="Hong Kong">Hong Koong</option>
+                                                    <option value="India">Ấn Độ</option>
+                                                    <option value="Japan">Nhật Bản</option>
+                                                    <option value="Korea">Hàn Quốc</option>
+                                                    <option value="Laos">Lào</option>
+                                                    <option value="Myanmar">Myanmar</option>
+                                                    <option value="Singapore">Singapore</option>
+                                                    <option value="Thailand">Thái Lan</option>
+                                                    <option value="Vietnam">Việt Nam</option>
+                                                    <option value="USA">Mỹ</option>
+                                                    <option value="UK">Vương quốc Anh</option>
+                                                    <option value="France">Pháp</option>
+                                                    <option value="Germany">Đức</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="departure">Ngày khởi hành:</label>
+                                                <input name="deparure" type="text" class="form-control date"
+                                                    id="deparure" placeholder="Chọn ngày" required=""
+                                                    onchange='this.form()'>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <label for="return">Ngày trở lại:</label>
+                                                <input name="return" type="text" class="form-control date" id="return"
+                                                    placeholder="Chọn ngày" required="" onchange='this.form()'>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="radio-select">
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <label for="round">Khứ hồi</label>
+                                                        <input type="radio" name="trip" id="round" value="round"
+                                                            required="required" onchange='this.form()'>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                                        <label for="oneway">Một chiều</label>
+                                                        <input type="radio" name="trip" id="oneway" value="one-way"
+                                                            required="required" onchange='this.form()'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" class="btn"><div><a href="./datvethanhcong.html">Check vé ngay</a></div></button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="tabs-content" id="weather">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Thời tiết trong 5 ngày tiếp theo</h2>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="col-md-12">
+                        <div class="weather-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="tabs clearfix" data-tabgroup="second-tab-group">
+                                        <li><a href="#monday" class="active">Thứ hai</a></li>
+                                        <li><a href="#tuesday">Thứ ba</a></li>
+                                        <li><a href="#wednesday">Thứ tư</a></li>
+                                        <li><a href="#thursday">Thứ năm</a></li>
+                                        <li><a href="#friday">Thứ sáu</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-12">
+                                    <section id="second-tab-group" class="weathergroup">
+                                        <div id="monday">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Myanmar</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-03.png" alt="">
+                                                        </div>
+                                                        <span>32&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>26&deg;</span></li>
+                                                            <li>12PM <span>32&deg;</span></li>
+                                                            <li>6PM <span>28&deg;</span></li>
+                                                            <li>12AM <span>22&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Thái Lan</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-02.png" alt="">
+                                                        </div>
+                                                        <span>28&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>20&deg;</span></li>
+                                                            <li>12PM <span>28&deg;</span></li>
+                                                            <li>6PM <span>26&deg;</span></li>
+                                                            <li>12AM <span>18&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Ấn Độ</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-01.png" alt="">
+                                                        </div>
+                                                        <span>33&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>26&deg;</span></li>
+                                                            <li>12PM <span>33&deg;</span></li>
+                                                            <li>6PM <span>29&deg;</span></li>
+                                                            <li>12AM <span>27&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tuesday">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Myanmar</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-02.png" alt="">
+                                                        </div>
+                                                        <span>28&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>18&deg;</span></li>
+                                                            <li>12PM <span>27&deg;</span></li>
+                                                            <li>6PM <span>25&deg;</span></li>
+                                                            <li>12AM <span>17&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Thái Lan</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-03.png" alt="">
+                                                        </div>
+                                                        <span>31&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>19&deg;</span></li>
+                                                            <li>12PM <span>28&deg;</span></li>
+                                                            <li>6PM <span>22&deg;</span></li>
+                                                            <li>12AM <span>18&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Ấn Độ</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-01.png" alt="">
+                                                        </div>
+                                                        <span>26&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>19&deg;</span></li>
+                                                            <li>12PM <span>26&deg;</span></li>
+                                                            <li>6PM <span>22&deg;</span></li>
+                                                            <li>12AM <span>20&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="wednesday">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Myanmar</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-03.png" alt="">
+                                                        </div>
+                                                        <span>31&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>19&deg;</span></li>
+                                                            <li>12PM <span>28&deg;</span></li>
+                                                            <li>6PM <span>22&deg;</span></li>
+                                                            <li>12AM <span>18&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Thái Lan</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-01.png" alt="">
+                                                        </div>
+                                                        <span>34&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>28&deg;</span></li>
+                                                            <li>12PM <span>34&deg;</span></li>
+                                                            <li>6PM <span>30&deg;</span></li>
+                                                            <li>12AM <span>29&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Ấn Độ</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-02.png" alt="">
+                                                        </div>
+                                                        <span>28&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>18&deg;</span></li>
+                                                            <li>12PM <span>27&deg;</span></li>
+                                                            <li>6PM <span>25&deg;</span></li>
+                                                            <li>12AM <span>17&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="thursday">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Myanmar</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-01.png" alt="">
+                                                        </div>
+                                                        <span>27&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>21&deg;</span></li>
+                                                            <li>12PM <span>27&deg;</span></li>
+                                                            <li>6PM <span>22&deg;</span></li>
+                                                            <li>12AM <span>18&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Thái Lan</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-02.png" alt="">
+                                                        </div>
+                                                        <span>28&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>18&deg;</span></li>
+                                                            <li>12PM <span>27&deg;</span></li>
+                                                            <li>6PM <span>25&deg;</span></li>
+                                                            <li>12AM <span>17&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Ấn Độ</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-03.png" alt="">
+                                                        </div>
+                                                        <span>31&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>19&deg;</span></li>
+                                                            <li>12PM <span>28&deg;</span></li>
+                                                            <li>6PM <span>22&deg;</span></li>
+                                                            <li>12AM <span>18&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="friday">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Myanmar</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-03.png" alt="">
+                                                        </div>
+                                                        <span>33&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>28&deg;</span></li>
+                                                            <li>12PM <span>33&deg;</span></li>
+                                                            <li>6PM <span>29&deg;</span></li>
+                                                            <li>12AM <span>27&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Thái Lan</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-02.png" alt="">
+                                                        </div>
+                                                        <span>31&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>24&deg;</span></li>
+                                                            <li>12PM <span>31&deg;</span></li>
+                                                            <li>6PM <span>26&deg;</span></li>
+                                                            <li>12AM <span>23&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="weather-item">
+                                                        <h6>Ấn Độ</h6>
+                                                        <div class="weather-icon">
+                                                            <img src="img/weather-icon-01.png" alt="">
+                                                        </div>
+                                                        <span>28&deg;C</span>
+                                                        <ul class="time-weather">
+                                                            <li>6AM <span>24&deg;</span></li>
+                                                            <li>12PM <span>28&deg;</span></li>
+                                                            <li>6PM <span>26&deg;</span></li>
+                                                            <li>12AM <span>22&deg;</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-item first-service">
+                        <div class="service-icon"></div>
+                        <h4>Đặt máy bay dễ dàng</h4>
+                        <p>Máy bay và hãng hàng không là biểu tượng của sự phát triển, hội nhập của thế giới.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item second-service">
+                        <div class="service-icon"></div>
+                        <h4>Unique Ideas</h4>
+                        <p>Hãng hàng không là nhịp cầu nối liền các quốc gia, dân tộc.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-item third-service">
+                        <div class="service-icon"></div>
+                        <h4>Best Support</h4>
+                        <p>Máy bay là cánh ước mơ, đưa ta tới những chân trời mới.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="tabs-content" id="recommended-hotel">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>KHÁCH SẠN ĐƯỢC KHUYẾN NGHỊ CHO BẠN KHI TỚI ANH</h2>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="col-md-4">
+                        <ul class="tabs clearfix" data-tabgroup="third-tab-group">
+                            <li><a href="#livingroom" class="active">Living Room <i class="fa fa-angle-right"></i></a>
+                            </li>
+                            <li><a href="#suitroom">Suit Room <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#swimingpool">Swiming Pool <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#massage">Massage Service <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#fitness">Fitness Life <i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="#event">Evening Event <i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <section id="third-tab-group" class="recommendedgroup">
+                        <div id="livingroom">
+                            <div class="text-content">
+                                <iframe width="100%" height="400px" src="https://www.youtube.com/watch?v=S3IqRaWvRG0">
+                                </iframe>
+                            </div>
+                        </div>
+                        <div id="suitroom">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="owl-suiteroom" class="owl-carousel owl-theme">
+                                        <div class="item">
+                                            <div class="suiteroom-item">
+                                                <img src="img/suite-02.jpg" alt="">
+                                                <div class="text-content">
+                                                    <h4>Clean And Relaxing Room</h4>
+                                                    <span>Aurora Resort</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="suiteroom-item">
+                                                <img src="img/suite-01.jpg" alt="">
+                                                <div class="text-content">
+                                                    <h4>Special Suite Room TV</h4>
+                                                    <span>Khao Yai Hotel</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="suiteroom-item">
+                                                <img src="img/suite-03.jpg" alt="">
+                                                <div class="text-content">
+                                                    <h4>The Best Sitting</h4>
+                                                    <span>Hotel Grand</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="swimingpool">
+                            <img src="img/swiming-pool.jpg" alt="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-content">
+                                        <h4>Lovely View Swiming Pool For Special Guests</h4>
+                                        <span>Victoria Resort and Spa</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="massage">
+                            <img src="img/massage-service.jpg" alt="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-content">
+                                        <h4>Perfect Place For Relaxation</h4>
+                                        <span>Napali Beach</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="fitness">
+                            <img src="img/fitness-service.jpg" alt="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-content">
+                                        <h4>Insane Street Workout</h4>
+                                        <span>Hua Hin Beach</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="event">
+                            <img src="img/evening-event.jpg" alt="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-content">
+                                        <h4>Finest Winery Night</h4>
+                                        <span>Queen Restaurant</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <section id="most-visited">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>ĐỊA ĐIỂM ĐƯỢC ĐẾN NHIỀU NHẤT</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div id="owl-mostvisited" class="owl-carousel owl-theme">
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-01.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>River Views</h4>
+                                    <span>New York</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-02.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Lorem ipsum dolor</h4>
+                                    <span>Tokyo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-03.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Proin dignissim</h4>
+                                    <span>Paris</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-04.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Fusce sed ipsum</h4>
+                                    <span>Hollywood</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-02.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Vivamus egestas</h4>
+                                    <span>Tokyo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-01.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Aliquam elit metus</h4>
+                                    <span>New York</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-03.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Phasellus pharetra</h4>
+                                    <span>Paris</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-04.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>In in quam efficitur</h4>
+                                    <span>Hollywood</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-01.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Sed faucibus odio</h4>
+                                    <span>NEW YORK</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col-md-12">
+                            <div class="visited-item">
+                                <img src="img/place-02.jpg" alt="">
+                                <div class="text-content">
+                                    <h4>Donec varius porttitor</h4>
+                                    <span>Tokyo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="primary-button">
+                        <a href="./lietkechuyenbay.html" >Xem chuyến bay</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com//"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <p> Chiến Thịnh & Trọng Anh 2023 Flight Tour and Travel Company</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-3.7.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/datepicker.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // navigation click actions 
+            $('.scroll-link').on('click', function (event) {
+                event.preventDefault();
+                var sectionID = $(this).attr("data-id");
+                scrollToID('#' + sectionID, 750);
+            });
+            // scroll to top action
+            $('.scroll-top').on('click', function (event) {
+                event.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+            // mobile nav toggle
+            $('#nav-toggle').on('click', function (event) {
+                event.preventDefault();
+                $('#main-nav').toggleClass("open");
+            });
+        });
+        // scroll function
+        function scrollToID(id, speed) {
+            var offSet = 0;
+            var targetOffset = $(id).offset().top - offSet;
+            var mainNav = $('#main-nav');
+            $('html,body').animate({ scrollTop: targetOffset }, speed);
+            if (mainNav.hasClass("open")) {
+                mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+                mainNav.removeClass("open");
+            }
+        }
+        if (typeof console === "undefined") {
+            console = {
+                log: function () { }
+            };
+        }
+    </script>
+    <script>
+        function submitForm() {
+                const nameInput = document.getElementById("name");
+                const phoneInput = document.getElementById("phone");
+                const idCardInput = document.getElementById("idCard");
+                const ten_khach_hang = nameInput.value;
+                const so_dien_thoai = phoneInput.value;
+                const can_cuoc_cong_dan = idCardInput.value;
+                const departure = document.getElementById("departure").value;
+                const destination = document.getElementById("destination").value;
+                const date = document.getElementById("date").value;
+                const passengers = document.getElementById("passengers").value;
+
+                if (ten_khach_hang === "") {
+                    alert("Vui lòng nhập họ và tên.");
+                    return;
+                }
+
+                if (so_dien_thoai === "") {
+                    alert("Vui lòng nhập số điện thoại.");
+                    return;
+                }
+
+                if (can_cuoc_cong_dan === "") {
+                alert("Vui lòng nhập số căn cước công dân.");
+                return;
+                }
+
+                if (departure === "") {
+                    alert("Vui lòng chọn điểm khởi hành.");
+                    return;
+                }
+
+                if (destination === "") {
+                    alert("Vui lòng chọn điểm đến.");
+                    return;
+                }
+
+                if (date === "") {
+                    alert("Vui lòng chọn ngày đi.");
+                    return;
+                }
+
+                if (passengers === "" || passengers < 1 || passengers > 100) {
+                    alert("Vui lòng nhập số hành khách hợp lệ.");
+                    return;
+                }
+
+                const notification = document.getElementById("notification");
+            const flightInfo = document.getElementById("flightInfo");
+            const ticketPrice = document.getElementById("ticketPrice");
+            const paymentButton = document.getElementById("paymentButton");
+            const thankYou = document.getElementById("thankYou");
+            const bestWishes = document.getElementById("bestWishes");
+
+            if (departure === "" || destination === "" || date === "" || passengers === "") {
+                notification.textContent = "Vui lòng điền đầy đủ thông tin.";
+                notification.style.display = "block";
+                flightInfo.style.display = "none";
+                ticketPrice.style.display = "none";
+                thankYou.style.display = "none";
+                bestWishes.style.display = "none";
+                return;
+            }
+
+            const customerInfo = `Khách hàng: ${ten_khach_hang} (${so_dien_thoai})`;
+            const idCardInfo = `Số căn cước công dân: ${idCardNumber}`;
+            const flightDetails = `Chi tiết chuyến bay: ${departure} đến ${destination} vào ngày ${date}`;
+            const pricePerPassenger = 1000;
+            const totalPrice = pricePerPassenger * passengers;
+
+            notification.style.display = "none";
+            flightInfo.textContent = `${customerInfo}\n${flightDetails}`;
+            flightInfo.style.display = "block";
+            ticketPrice.textContent = `Giá vé: $${totalPrice}`;
+            ticketPrice.style.display = "block";
+            paymentButton.style.display = "block";
+            thankYou.style.display = "none";
+            bestWishes.style.display = "none";
+            }
+        function completePayment() {
+            var paymentContainer = document.querySelector('.payment-container');
+            paymentContainer.style.display = 'block';
+            const payment = document.getElementById("payment");
+            const paymentButton = document.getElementById("paymentButton");
+            const thankYou = document.getElementById("thankYou");
+            const bestWishes = document.getElementById("bestWishes");
+
+            payment.style.display = "none";
+            paymentButton.style.display = "none";
+            thankYou.style.display = "block";
+            bestWishes.style.display = "block";
+        }
+    </script>
+    <script>
+    </script>
+</body>
+</html>

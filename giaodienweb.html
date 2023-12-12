@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+   
+</head>
+<style>
+  /* CSS for Navbar */
+  .navbar {
+      background-color: #000;
+  }
+
+  .navbar-brand {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+  }
+
+  .navbar-toggler-icon {
+      color: #fff;
+  }
+
+  .nav-link {
+      color: #fff;
+      text-decoration: none;
+  }
+
+  /* CSS for Questions */
+  .question {
+      margin-bottom: 20px;
+  }
+
+  .question h3 {
+      margin-bottom: 10px;
+  }
+
+  .question img {
+      cursor: pointer;
+  }
+
+  .question button {
+      margin-top: 10px;
+  }
+
+  /* CSS for Answers */
+  #answer1,
+  #answer2 {
+      display: none;
+      margin-top: 10px;
+  }
+
+  /* CSS for Container and Rows */
+  .container {
+      margin-top: 20px;
+  }
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Trang chủ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Khung hình</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Trợ giúp</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="question">
+          <h3>Câu hỏi 1</h3>
+          <img src="./chim.jpg" width="150px " height="150px" alt="Ảnh câu hỏi" onclick="showAnswer(1)">
+          <div id="answer1" style="display: none;">
+            con chim
+          </div>
+          <input type="text" id="input1">
+          <button onclick="checkAnswer(1)">Trả lời</button>
+        </div>
+        
+        <div class="question">
+          <h3>Câu hỏi 2</h3>
+          <img src="./cho.jpg" alt="Ảnh câu hỏi" onclick="showAnswer(2)">
+          <div id="answer2" style="display: none;">
+            con cho
+          </div>
+          <input type="text" id="input2">
+          <button onclick="checkAnswer(2)">Trả lời</button>
+        </div>
+        
+        <!-- Thêm câu hỏi khác tương tự -->
+        
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dữ liệu câu hỏi và câu trả lời cố định
+    var questions = [
+      { question: "Câu hỏi 1", answer: "con chim" },
+      { question: "Câu hỏi 2", answer: "con cho" },
+      // Thêm câu hỏi khác tương tự
+    ];
+    
+    var currentQuestion = 0;
+
+    function showAnswer(questionIndex) {
+      var answerId = "answer" + questionIndex;
+      var answerElement = document.getElementById(answerId);
+      answerElement.style.display = "block";
+    }
+
+    function checkAnswer(questionIndex) {
+      var inputId = "input" + questionIndex;
+      var inputElement = document.getElementById(inputId);
+      var userAnswer = inputElement.value;
+      var correctAnswer = questions[questionIndex - 1].answer;
+
+      if (userAnswer === correctAnswer) {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          // Chuyển sang câu hỏi kế tiếp
+          loadQuestion(currentQuestion);
+        } else {
+          // Hoàn thành tất cả các câu hỏi
+          alert("Hoàn thành tất cả các câu hỏi");
+        }
+      } else {
+        // Sai câu trả lời
+        alert("Sai câu trả lời");
+      }
+    }
+
+    function loadQuestion(questionIndex) {
+      var questionElement = document.getElementsByClassName("question");
+      for (var i = 0; i < questionElement.length; i++) {
+        questionElement[i].style.display = "none";
+      }
+
+      questionElement[questionIndex].style.display = "block";
+    }
+
+    loadQuestion(currentQuestion);
+  </script>
+</body>
+
+</html>
